@@ -1,0 +1,131 @@
+<div class="category-selector">
+        <ul>                        
+            <li ng-click="vm.selectCategory('service')" class="category-circle active" data-toggle="tab" data-target="#make-ser">
+                    <i class="fa fa-male" aria-hidden="true"></i> Service
+            </li>
+            <li ng-click="vm.selectCategory('material')" class="category-circle" data-toggle="tab" data-target="#make-mat">
+                    <i class="fa fa-cubes" aria-hidden="true"></i> Material
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content form-control-sm">
+        <!-- Material form -->
+        <div id="make-mat" class="tab-pane">
+            <div class="make-mat-form">
+
+                <div class="form-group row">
+                    <label for="title-input" class="col-2 col-form-label">Title</label>
+                    <div class="col-10">
+                        <input ng-model="vm.title" class="form-control" type="text" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                        <label for="title-input" class="col-2 col-form-label">Description</label>
+                        <div class="col-10">
+                            <textarea ng-model="vm.description" rows="4" class="form-control" type="text" required></textarea>
+                        </div>
+                    </div>
+
+                <div class="form-group row">
+                        <label class="col-2 col-form-label">Sub-category</label>
+                        <div class="col-10 ">
+                            <select ng-model="vm.mSubCategory" class="form-control">
+                                <option value="" selected>none</option>
+                                <option value="mc1">mCategory 1</option>
+                                <option value="mc2">mCategory 2</option>
+                                <option value="mc3">mCategory 3</option>
+                                <option value="mc4">mCategory 4</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                            <label class="col-2 col-form-label">Budget</label>
+                            <div class="col-4">
+                                    <input ng-model="vm.budget" class="form-control" type="number">
+                            </div>
+                            <label class="col-2 col-form-label">Days</label>
+                            <div class="col-4">
+                                    <input ng-model="vm.mDays" class="form-control" type="number" >
+                            </div>
+                        </div>
+
+                <div class="form-group row">
+                        <label for="title-input" class="col-2 col-form-label">Location</label>
+                        <div class="col-10">
+                            <input ng-model="vm.location" class="form-control" type="text">
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+        <!-- Material form end -->
+
+        <!-- Service form -->
+        <div id="make-ser" class="tab-pane active">
+                <div class="make-mat-form">
+
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Title</label>
+                        <div class="col-10">
+                            <input  ng-model="vm.title" class="form-control" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                            <label for="title-input" class="col-2 col-form-label">Description</label>
+                            <div class="col-10">
+                                <textarea ng-model="vm.description" rows="4" class="form-control" type="text"></textarea>
+                            </div>
+                        </div>
+
+                    <div class="form-group row">
+                            <label for="title-input" class="col-2 col-form-label">Sub-category</label>
+                            <div class="col-10 ">
+                                <select ng-model="vm.sSubCategory" class="form-control">
+                                    <option value="" selected>none</option>
+                                    <option value="sc1">sCategory 1</option>
+                                    <option value="sc2">sCategory 2</option>
+                                    <option value="sc3">sCategory 3</option>
+                                    <option value="sc4">sCategory 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="form-group row">
+                            <label class="col-2 col-form-label">Budget</label>
+                            <div class="col-5">
+                                    <input ng-model="vm.budget" class="form-control" type="number">
+                            </div>
+                            <div class="col-5">
+                                    <select ng-model="vm.budgetTypology" class="form-control">
+                                            <option value="">not listed</option>
+                                            <option value="pd">per hour</option>
+                                            <option value="vd">per day</option>
+                                            <option value="g">global</option>
+                                            <option value="q">quotation</option>
+                                    </select>
+                            </div>
+                        </div>
+
+                    <div class="form-group row">
+                            <label class="col-2 col-form-label">Location</label>
+                            <div class="col-10">
+                                <input ng-model="vm.location" class="form-control" type="text" id="title-input">
+                            </div>
+                        </div>
+
+                </div>
+        </div>
+        <!-- Service form end -->
+        <br>
+
+        <div ng-if="vm.msg" class="alert alert-danger">
+            <ul>
+                <li ng-repeat="m in vm.msg">{{m}}</li>
+            </ul>
+        </div>
+        <button ng-click="vm.createRequestBtn()" class="btn btn-primary btn-sm btn-block" >Create Request</button>
+        
+    </div>

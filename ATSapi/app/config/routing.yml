@@ -1,0 +1,11 @@
+app:
+    resource: '@AppBundle/Controller/DefaultController.php'
+    type: annotation
+
+requests:
+    type: rest
+    resource: AppBundle\Controller\RequestController
+
+users:
+    type: rest
+    resource: AppBundle\Controller\UserController

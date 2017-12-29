@@ -1,0 +1,67 @@
+
+        <div ng-if=' vm.bFilters '>
+            <div class="form-group row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                                <select ng-change="vm.applyFilters()" ng-model="vm.categoryFilter" class="form-control" style="margin-bottom:10px;">
+                                        <option value="">All Categories</option>
+                                        <option value="material">Materials</option>
+                                        <option value="service">Services</option>
+                                    </select>
+                        </div>
+                        <div class="col-md-6">
+                                <input type="text"  ng-change="vm.applyFilters()" ng-model="vm.locationFilter" class="form-control" placeholder="serach by location">
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="col-4 text-right">
+                        
+                        <div class="btn-group">
+                            <button type="button" class="btn" ng-click="vm.sortBy('date')" ng-class="vm.sortProperty=='date'?'btn-primary':'btn-secondary'"><i class="fa fa-clock-o"></i></button>
+                            <button type="button" class="btn" ng-click="vm.sortBy('budget')" ng-class="vm.sortProperty=='budget'?'btn-primary':'btn-secondary'"><i class="fa fa-money"></i></button>
+                        </div>
+                        
+                    </div>
+            </div>
+        </div>
+
+        <p ng-if="vm.bFilters">A total of {{ vm.requests.length}} <em>Requests</em> found </p>
+
+        <div class="pagination-container">
+                <ul class="pagination pagination-sm  justify-content-center" ng-if='vm.bPages && vm.numberOfPages()>=1'>
+                        <li class="page-item" ng-disabled="true" ><a ng-click="vm.previousPage($event)" href="#" class="page-link"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="page-item" ng-repeat="n in vm.pageArray() track by $index" ng-class="vm.currentPage==$index? 'active' : '' "><a  ng-click="vm.moveToPage($index,$event)" href="#"  class="page-link">{{$index+1}}</a></li>
+                        <li class="page-item" ><a ng-click="vm.nextPage($event)" href="#" class="page-link"><i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+        </div>
+        
+        <div class="demands-list">
+            <div class="demand-item" ng-repeat=
+                "r in vm.requests 
+                | orderBy : vm.sortProperty:true 
+                | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">        
+                <!-- Alternative filter
+                    | filter:{title:vm.locationFilter} | filter:{category:vm.categoryFilter}
+                -->
+                <h5 class="title"><a href="#" ui-sref="request({requestId:r.id})">{{ r.title }}</a></h5>
+                <h6 class="categorie">Category <b>{{ r.category }}</b></h6>
+                <div class="poster"><i class="fa fa-home" aria-hidden="true"></i> {{ r.location }}</div>
+                <div class="poster"><i class="fa fa-money" aria-hidden="true"></i> {{ r.budget }} DT</div>
+                <p class="description">{{ r.description }}</p>
+                <div class="information">
+                    <div class="poster"><i class="fa fa-user-o" aria-hidden="true"></i> {{ r.user }}</div>                    
+                    <div class="date"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ r.date }} </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination-container">
+                <ul class="pagination pagination-sm  justify-content-center" ng-if='vm.bPages  && vm.numberOfPages()>=1'>
+                        <li class="page-item" ng-disabled="true" ><a ng-click="vm.previousPage($event)" href="#" class="page-link"><i class="fa fa-chevron-left"></i></a></li>
+                        <li class="page-item" ng-repeat="n in vm.pageArray() track by $index" ng-class="vm.currentPage==$index? 'active' : '' "><a  ng-click="vm.moveToPage($index,$event)" href="#"  class="page-link">{{$index+1}}</a></li>
+                        <li class="page-item" ><a ng-click="vm.nextPage($event)" href="#" class="page-link"><i class="fa fa-chevron-right"></i></a></li>
+                </ul>
+        </div>

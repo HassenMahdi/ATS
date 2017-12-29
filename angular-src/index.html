@@ -1,0 +1,43 @@
+ <!DOCTYPE html>
+ <html lang="en" ng-app="App">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>ATS</title>
+     <!-- css files and themes -->
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+     <link rel="stylesheet" href="assets/css/main.css">
+     <link rel="stylesheet" href="assets/css/carousel.css">
+     <link rel="stylesheet" href="assets/css/sticky-footer.css">
+     <link rel="stylesheet" href="assets/css/animate.css">
+ </head>
+ <body ng-controller="mainCtrl">
+    <!-- Navbar -->
+      <navbar></navbar>
+    <!-- Navbar end -->
+
+    <!-- Content-->
+      <ui-view></ui-view>
+    <!-- Content end-->
+
+ </body>
+    <script src="assets/js/tether.min.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-ui-router.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/components/navbar-component/navbar.component.js"></script>
+    <script src="app/components/home-component/home.component.js"></script>
+    <script src="app/components/register-component/register.component.js"></script>
+    <script src="app/components/login-component/login.component.js"></script>
+    <script src="app/components/request-list-component/request-list.component.js"></script>
+    <script src="app/components/request-list-component/request-list.service.js"></script>
+    <script src="app/components/all-requests-component/all-requests.component.js"></script>
+    <script src="app/components/request-form-component/request-form.component.js"></script>
+    <script src="app/components/request-detail-component/request-detail.component.js"></script>
+    <script src="app/components/login-component/auth.service.js"></script>
+ </html>
